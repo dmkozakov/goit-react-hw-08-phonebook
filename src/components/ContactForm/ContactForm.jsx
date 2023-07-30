@@ -2,12 +2,12 @@ import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import * as S from 'components/ContactForm/ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const validationSchema = yup.object().shape({
@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     )
     .required(),
-  phone: yup
+  number: yup
     .string()
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
@@ -27,7 +27,7 @@ const validationSchema = yup.object().shape({
     .required(),
 });
 
-export default function ContactForm() {
+export function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -65,7 +65,7 @@ export default function ContactForm() {
           <p>Number</p>
           <Field
             type="tel"
-            name="phone"
+            name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredContacts } from 'redux/selectors';
+import { selectFilteredContacts } from 'redux/contacts/selectors';
 import * as S from 'components/ContactList/ContactList.styled';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -10,12 +10,12 @@ export const ContactList = () => {
 
   return (
     <S.ContactList>
-      {filteredContacts.map(({ id, name, phone }) => {
+      {filteredContacts.map(({ id, name, number }) => {
         return (
           <li key={id}>
             <div>
               <S.ContactName>{name}</S.ContactName>
-              <S.ContactPhone>{phone}</S.ContactPhone>
+              <S.ContactPhone>{number}</S.ContactPhone>
             </div>
             <button
               type="button"
