@@ -1,5 +1,15 @@
-import React from 'react';
+import { Container } from '@mui/material';
 
 export function NotFound() {
-  return <div>NotFound</div>;
+  return (
+    <Container
+      maxWidth="xl"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      Not Found
+    </Container>
+  );
 }

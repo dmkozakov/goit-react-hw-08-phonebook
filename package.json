@@ -4,7 +4,11 @@
   "private": true,
   "homepage": "https://dmkozakov.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.5",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -12,8 +16,8 @@
     "axios": "^1.4.0",
     "formik": "^2.4.0",
     "nanoid": "^4.0.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
     "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.2",
@@ -28,6 +32,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "eslintConfig": {
     "extends": [

@@ -1,6 +1,5 @@
-import { Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as yup from 'yup';
-import * as S from 'components/ContactForm/ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
@@ -49,7 +48,7 @@ export function ContactForm() {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <S.StyledForm>
+      <Form>
         <label>
           <p>Name</p>
           <Field
@@ -59,7 +58,7 @@ export function ContactForm() {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-          <S.ValidateError name="name" component="div" />
+          <ErrorMessage name="name" component="div" />
         </label>
         <label>
           <p>Number</p>
@@ -70,10 +69,10 @@ export function ContactForm() {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-          <S.ValidateError name="phone" component="div" />
+          <ErrorMessage name="phone" component="div" />
         </label>
         <button type="submit">Add contact</button>
-      </S.StyledForm>
+      </Form>
     </Formik>
   );
 }
