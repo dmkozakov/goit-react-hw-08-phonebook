@@ -12,6 +12,6 @@ export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.func,
+  component: PropTypes.object,
   redirectTo: PropTypes.string.isRequired,
 };

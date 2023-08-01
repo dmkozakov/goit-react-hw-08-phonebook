@@ -1,9 +1,11 @@
-import { Formik, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import * as S from 'components/ContactForm/ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import { Input } from 'components/Input/Input';
+import { ValidationError } from './ContctForm.styled';
+import { Button, Stack } from '@mui/material';
 
 const initialValues = {
   name: '',
@@ -49,31 +51,49 @@ export function ContactForm() {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <S.StyledForm>
-        <label>
-          <p>Name</p>
-          <Field
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-          <S.ValidateError name="name" component="div" />
-        </label>
-        <label>
-          <p>Number</p>
-          <Field
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-          <S.ValidateError name="phone" component="div" />
-        </label>
-        <button type="submit">Add contact</button>
-      </S.StyledForm>
+      <Form>
+        <Stack
+          spacing={1}
+          sx={{
+            minWidth: '280px',
+            width: '400px',
+          }}
+        >
+          <label>
+            <Input
+              sx={{ width: '100%' }}
+              size="small"
+              label="Name"
+              variant="outlined"
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+            <ValidationError name="name" component="div" />
+          </label>
+          <label>
+            <Input
+              sx={{ width: '100%' }}
+              size="small"
+              label="Number"
+              variant="outlined"
+              type="tel"
+              name="number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+            <ValidationError name="number" component="div" />
+          </label>
+          <Button
+            variant="contained"
+            sx={{ my: 0, color: 'white', display: 'block' }}
+            type="submit"
+          ></Button>
+        </Stack>
+      </Form>
     </Formik>
   );
 }
