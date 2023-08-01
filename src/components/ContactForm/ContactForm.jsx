@@ -91,7 +91,9 @@ export function ContactForm() {
             variant="contained"
             sx={{ my: 0, color: 'white', display: 'block' }}
             type="submit"
-          ></Button>
+          >
+            Add contact
+          </Button>
         </Stack>
       </Form>
     </Formik>
