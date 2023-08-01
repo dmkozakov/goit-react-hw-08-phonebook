@@ -19,12 +19,21 @@ export const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
-    <List>
+    <List
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+      }}
+    >
       {filteredContacts.map(({ id, name, number }) => {
         return (
           <ListItem
             key={id}
-            sx={{ maxWidth: '500px', minWidth: '300px' }}
+            sx={{
+              maxWidth: '500px',
+              minWidth: '300px',
+            }}
             secondaryAction={
               <IconButton
                 edge="end"

@@ -10,7 +10,7 @@ const initialValues = {
   password: '',
 };
 
-export function Login() {
+export default function Login() {
   const dispatch = useDispatch();
 
   const handleSubmit = (user, { resetForm }) => {

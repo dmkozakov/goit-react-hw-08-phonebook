@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
 };
 
 const handleSignUpUser = (state, action) => {
@@ -18,6 +19,11 @@ const handleLoginUser = (state, action) => {
   state.user = action.payload.user;
   state.token = action.payload.token;
   state.isLoggedIn = true;
+  state.error = null;
+};
+
+const handleLoginUserRejected = (state, action) => {
+  state.error = action.payload;
 };
 
 const handleLogOutUser = state => {
@@ -47,6 +53,7 @@ export const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, handleSignUpUser)
       .addCase(login.fulfilled, handleLoginUser)
+      .addCase(login.rejected, handleLoginUserRejected)
       .addCase(logout.fulfilled, handleLogOutUser)
       .addCase(refresh.pending, handleRefreshUserPending)
       .addCase(refresh.fulfilled, handleRefreshUserFulfilled)

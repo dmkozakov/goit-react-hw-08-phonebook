@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 
-export function NotFound() {
+export default function NotFound() {
   return (
     <Container
       maxWidth="xl"

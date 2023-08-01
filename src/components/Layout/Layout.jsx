@@ -9,7 +9,7 @@ import {
 import { Auth } from 'components/Auth/Auth';
 import * as S from 'components/Layout/Layout.styled';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
@@ -45,13 +45,17 @@ export function Layout() {
               </S.Link>
 
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                  <S.Link to="/">Home</S.Link>
-                </Button>
-                {isLoggedIn && (
+                <S.Link to="/">
                   <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                    <S.Link to="/contacts">Contacts</S.Link>
+                    Home
                   </Button>
+                </S.Link>
+                {isLoggedIn && (
+                  <S.Link to="/contacts">
+                    <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                      Contacts
+                    </Button>
+                  </S.Link>
                 )}
               </Box>
 
@@ -59,7 +63,9 @@ export function Layout() {
             </Toolbar>
           </Container>
         </AppBar>
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </>
     )
   );

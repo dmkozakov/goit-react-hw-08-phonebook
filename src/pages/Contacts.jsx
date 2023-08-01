@@ -11,15 +11,16 @@ import {
 import { fetchContacts } from 'redux/contacts/operations';
 import { Container, Typography } from '@mui/material';
 
-export function Contacts() {
+export default function Contacts() {
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   return (
     <Container maxWidth="xl">

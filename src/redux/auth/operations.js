@@ -33,7 +33,7 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      thunkAPI.rejectWithValue('Wrong login or password');
     }
   }
 );
