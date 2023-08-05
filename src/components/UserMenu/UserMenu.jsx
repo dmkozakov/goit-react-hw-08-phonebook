@@ -17,6 +17,7 @@ export function UserMenu() {
   const dispatch = useDispatch();
   const [anchorElUser, setAnchorElUser] = useState(null);
 
+  console.log(user);
   const handleOpenUserMenu = event => {
     setAnchorElUser(event.currentTarget);
   };

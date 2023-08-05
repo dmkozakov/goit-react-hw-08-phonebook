@@ -33,7 +33,7 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      thunkAPI.rejectWithValue('Wrong login or password');
+      return thunkAPI.rejectWithValue('Wrong login or password');
     }
   }
 );
@@ -43,7 +43,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -60,6 +60,6 @@ export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     const { data } = await axios.get('/users/current');
     return data;
   } catch (error) {
-    thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });

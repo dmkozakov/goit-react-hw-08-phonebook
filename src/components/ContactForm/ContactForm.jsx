@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { Input } from 'components/Input/Input';
-import { ValidationError } from './ContctForm.styled';
+import { ValidationError } from './ContactForm.styled';
 import { Button, Stack } from '@mui/material';
 
 const initialValues = {
