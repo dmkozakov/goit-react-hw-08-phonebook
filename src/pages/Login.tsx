@@ -1,19 +1,22 @@
 import { Box, Button, Container } from '@mui/material';
 import { Input } from 'components/Input/Input';
-import { Formik, Form } from 'formik';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import { Formik, Form, FormikHelpers } from 'formik';
+import { IUserCredentials } from 'interfaces/IUser';
 import { login } from 'redux/auth/operations';
+import { useAppDispatch } from 'redux/hooks';
 
 const initialValues = {
   email: '',
   password: '',
-};
+} as IUserCredentials;
 
 export default function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (user, { resetForm }) => {
+  const handleSubmit = (
+    user: IUserCredentials,
+    { resetForm }: FormikHelpers<IUserCredentials>
+  ) => {
     dispatch(login(user));
     resetForm();
   };

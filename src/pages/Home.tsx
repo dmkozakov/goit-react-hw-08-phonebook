@@ -1,11 +1,11 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import { ContactForm } from 'components/ContactForm/ContactForm';
-import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import * as S from 'components/Layout/Layout.styled';
+import { useAppSelector } from 'redux/hooks';
 
 export default function Home() {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
   return (
     <Container maxWidth="xl">
       <div>

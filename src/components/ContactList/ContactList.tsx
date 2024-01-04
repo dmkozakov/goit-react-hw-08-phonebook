@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContacts } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 import {
@@ -13,10 +11,11 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { stringAvatar } from 'services/stringAvatar';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 
 export const ContactList = () => {
-  const dispatch = useDispatch();
-  const filteredContacts = useSelector(selectFilteredContacts);
+  const dispatch = useAppDispatch();
+  const filteredContacts = useAppSelector(selectFilteredContacts);
 
   return (
     <List
@@ -46,7 +45,7 @@ export const ContactList = () => {
             }
           >
             <ListItemAvatar>
-              <Avatar sx={{ width: 56, height: 56 }} {...stringAvatar(name)}>
+              <Avatar {...stringAvatar(name)} sx={{ width: 56, height: 56 }}>
                 {name[0]}
               </Avatar>
             </ListItemAvatar>
@@ -68,14 +67,4 @@ export const ContactList = () => {
       })}
     </List>
   );
-};
-
-ContactList.propTypes = {
-  filteredContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
 };

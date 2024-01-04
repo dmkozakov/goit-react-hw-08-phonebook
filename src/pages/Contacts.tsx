@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { Filter } from '../components/Filter/Filter';
+import { Filter } from '../components/Filter/Filter.js';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Loader } from 'components/Loader/Loader';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectError,
@@ -10,13 +9,14 @@ import {
 } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { Container, Typography } from '@mui/material';
+import { useAppDispatch, useAppSelector } from 'redux/hooks.js';
 
 export default function Contacts() {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const contacts = useAppSelector(selectContacts);
+  const isLoading = useAppSelector(selectIsLoading);
+  const error = useAppSelector(selectError);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());

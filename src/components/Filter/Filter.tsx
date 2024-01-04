@@ -1,13 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filterSlice';
 import { selectFilter } from 'redux/contacts/selectors';
 import { TextField } from '@mui/material';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { ChangeEvent } from 'react';
 
 export const Filter = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
+  const dispatch = useAppDispatch();
+  const filter = useAppSelector(selectFilter);
 
-  const changeFilter = e => {
+  const changeFilter = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setFilter(e.target.value.toLowerCase()));
   };
 

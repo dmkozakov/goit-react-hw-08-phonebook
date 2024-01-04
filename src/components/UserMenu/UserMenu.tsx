@@ -7,18 +7,18 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { MouseEvent, useState } from 'react';
 import { logout } from 'redux/auth/operations';
 import { selectUser } from 'redux/auth/selectors';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 
 export function UserMenu() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const [anchorElUser, setAnchorElUser] = useState<Element | null>(null);
 
   console.log(user);
-  const handleOpenUserMenu = event => {
+  const handleOpenUserMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -56,7 +56,7 @@ export function UserMenu() {
       </Typography>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt={user}></Avatar>
+          <Avatar alt={`${user}`}></Avatar>
         </IconButton>
       </Tooltip>
       <Menu

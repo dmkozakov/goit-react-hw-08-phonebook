@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { Box, Button, Container, TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import { register as registerUser } from 'redux/auth/operations';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ValidationErrorMessage } from 'components/Auth/Auth.styled';
+import { useAppDispatch } from 'redux/hooks';
+import { IUserCredentials } from 'interfaces/IUser';
 
 const schema = yup
   .object({
@@ -44,9 +45,9 @@ export default function SignUp() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema), defaultValues: initialValues });
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const onSubmit = data => {
+  const onSubmit = (data: IUserCredentials) => {
     dispatch(registerUser(data));
   };
 
