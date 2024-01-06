@@ -19,9 +19,5 @@ function stringToColor(string: string) {
 }
 
 export function stringAvatar(name: string) {
-  return {
-    sx: {
-      bgcolor: stringToColor(name),
-    },
-  };
+  return stringToColor(name);
 }

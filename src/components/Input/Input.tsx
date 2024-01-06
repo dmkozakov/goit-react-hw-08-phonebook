@@ -1,20 +1,23 @@
 import { TextField } from '@mui/material';
-import { FieldHookConfig, useField } from 'formik';
+import { useField } from 'formik';
 
-interface MyInputProps {
-  size: string | number;
-  variant?: string;
+type InputProps = {
+  label: string;
+  name: string;
+  // validate?: (value: any) => undefined | string | Promise<any>;
   type?: string;
-  name?: string;
+  // multiple?: boolean;
+  value?: string;
+  size: 'small' | 'medium' | undefined;
+  variant?: 'outlined' | 'standard' | 'filled';
   title?: string;
   required?: boolean;
   pattern?: string;
   id?: string;
-  label: string;
   sx?: any;
-}
+};
 
-export const Input = ({ ...otherProps }: MyInputProps extends FieldHookConfig<any>) => {
+export const Input = ({ label, ...otherProps }: InputProps) => {
   const [field] = useField(otherProps);
 
   return <TextField {...field} {...otherProps} />;

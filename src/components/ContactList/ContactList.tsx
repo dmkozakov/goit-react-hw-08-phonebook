@@ -45,7 +45,14 @@ export const ContactList = () => {
             }
           >
             <ListItemAvatar>
-              <Avatar {...stringAvatar(name)} sx={{ width: 56, height: 56 }}>
+              <Avatar
+                sx={{
+                  width: 56,
+                  height: 56,
+                  bgcolor: stringAvatar(name),
+                  marginRight: '16px',
+                }}
+              >
                 {name[0]}
               </Avatar>
             </ListItemAvatar>

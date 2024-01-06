@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Filter } from '../components/Filter/Filter.js';
+import { Filter } from '../components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Loader } from 'components/Loader/Loader';
 import {
@@ -9,7 +9,7 @@ import {
 } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { Container, Typography } from '@mui/material';
-import { useAppDispatch, useAppSelector } from 'redux/hooks.js';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 
 export default function Contacts() {
   const contacts = useAppSelector(selectContacts);

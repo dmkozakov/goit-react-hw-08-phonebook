@@ -17,7 +17,6 @@ export function UserMenu() {
   const dispatch = useAppDispatch();
   const [anchorElUser, setAnchorElUser] = useState<Element | null>(null);
 
-  console.log(user);
   const handleOpenUserMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorElUser(event.currentTarget);
   };
